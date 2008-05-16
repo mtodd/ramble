@@ -2,6 +2,8 @@ require 'digest/md5'
 
 class User < Sequel::Model
   
+  set_primary_key :username
+  
   class << self
     
     # Authenticates a user against the username and password stored in the
@@ -16,7 +18,7 @@ class User < Sequel::Model
     # Returns true|false:authenticated?
     # 
     def authenticate(username, password)
-      !self[:username => username, :password => Digest::MD5.hexdigest(password)].empty?
+      !self[:username => username, :password => Digest::MD5.hexdigest(password)].nil?
     end
     
   end
