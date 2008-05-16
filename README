@@ -1,0 +1,36 @@
+= Ramble
+
+Solving the shortage of Merb-based blog engines!
+
+
+== Introduction
+
+This is essentially an experimentation with Merb; this previous statement can be
+read (and base the validity of many assumptions) that it will be very simple and
+that it will probably suck.
+
+
+== Installation
+
+This code was based off of Merb 0.9.3, so it may break before version 1.0.
+
+Dependencies:
+
+* Merb (>= 0.9.3)
+* Sequel (>= 1.5.1)
+* MySQL (or PostgreSQL)
+
+Once these dependencies are satisfied and migrations have been run, you should
+be fine to run the server.
+
+
+== License
+
+This software is licensed under the MIT License.
+
+http://www.opensource.org/licenses/mit-license.php
+
+
+== Copyright
+
+Copyright (C) 2008 Matt Todd <http://purl.org/net/maraby>.
