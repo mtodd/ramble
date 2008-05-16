@@ -57,6 +57,9 @@ Gem.path.unshift(Merb.root / "gems")
 # dependency "RedCloth", "> 3.0"
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
+
+dependency "merb_helpers"
+
 Merb::BootLoader.after_app_loads do
   # Add dependencies here that must load after the application loads:
 
@@ -78,7 +81,7 @@ end
 # use_orm :activerecord
 
 # Uncomment for Sequel ORM
-# use_orm :sequel
+use_orm :sequel
 
 
 #
@@ -94,7 +97,7 @@ end
 # merb.
 #
 # use_test :test_unit
-# use_test :rspec
+use_test :rspec
 
 
 #
@@ -105,7 +108,7 @@ Merb::Config.use do |c|
   # Sets up a custom session id key, if you want to piggyback sessions of other applications
   # with the cookie session store. If not specified, defaults to '_session_id'.
   # c[:session_id_key] = '_session_id'
-
+  
   c[:session_secret_key]  = '31dbd09a638e0e99bd829dbe4d469733aff80cab'
   c[:session_store] = 'cookie'
 end
