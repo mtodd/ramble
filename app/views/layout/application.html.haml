@@ -9,8 +9,8 @@
     %meta{:name => 'description', :content => "Matt Todd's Blog"}
     %meta{:name => 'keywords', :content => 'ruby, json, framework, soa, http, halcyon'}
     
-    %script{:lang => 'text/javascript', :src => '/javascripts/jquery-1.2.3.min.js'}
-    %script{:lang => 'text/javascript', :src => '/javascripts/application.js'}
+    - require_js 'jquery-1.2.3.min.js', 'application'
+    = include_required_js
     
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/master.css', :media => 'screen'}
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/application.css', :media => 'screen'}
@@ -40,6 +40,7 @@
         
       #footer
         
+        %hr.space
         %hr
         %p.alt.prepend-1
           Copyright (C) 2008 <a href="http://maraby.org/contact.html">Matt Todd</a>, all rights reserved.

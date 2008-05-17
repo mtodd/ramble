@@ -16,22 +16,31 @@ class Posts < Application
     if content_type == :html
       render
     else
-      display
+      display @post
     end
   end
   
-  # POST /posts;create
+  # GET /posts/new
+  def new
+    @post = Post.new
+    render
+  end
+  
+  # POST /posts
   def create
     provides :xml, :json
     
-    @post = Post.new(params[:post])
+    @post = Post.new(
+      :title => params[:title],
+      :body => params[:body],
+      :author_id => current_user.id
+    )
     
     if @post.save
-      flash[:notice] = 'Post saved'
-      redirect_to @post if content_type.in? :html
-      render :xml => @psot, :status => :created, :location => @post if content_type.in? :xml, :json
+      return redirect url(:admin_posts) if content_type == :html
+      render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
     else
-      render :action => 'new' if content_type.in? :html
+      return redirect url(:admin_posts) if content_type == :html
       render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
     end
   end

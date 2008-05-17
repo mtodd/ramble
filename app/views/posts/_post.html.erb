@@ -7,5 +7,5 @@
 <div id="text" class="span-6 last">
   <h3 class="title"><%= post.title %></h3>
   <span class="created">Posted <%= relative_date(post.created_at) %></span>
-  <span class="author">by <%= post.user.name rescue 'Joe' %></span>
+  <span class="author">by <%= post.author.name rescue 'anonymous' %></span>
 </div>

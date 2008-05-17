@@ -9,19 +9,28 @@
 </div>
 
 <div id="management" class="span-14 last">
-  <div id="post-contents" style="display:none;"></div>
-  <div id="post-form">
+  
+  <div id="post-contents" style="display:none;">
+    <h3 id="post-contents_title" class="title">default</h3>
+    <div id="post-contents_body" class="body">default</div>
+    <div id="post-contents_author" class="author">default</div>
+    <%= link_to_function "close", "close_post();" %>
+  </div>
+  
+  <div id="post-form" style="display:none;">
+    <%= hidden_field(:name => 'post_create_action', :value => url(:posts), :id => 'post_create_action') %>
     <h3 class="title">Post</h3>
-    <% @post = Post.new; form_for :post, :action => url(:post) do %>
-      <div><%= text_control :title, :label => 'Title' %></div>
-      <div><%= text_control :body,  :label => 'Body' %></div>
-      <div><%= submit_button 'Save' %></div>
+    <% form_tag(:action => url(:posts), :id => 'form_for_post') do %>
+      <div><%= text_field :name => "title", :label => 'Title' %></div>
+      <div><%= text_field :name => "body",  :label => 'Body' %></div>
+      <div><%= submit_button "Save" %> or <%= link_to_function "Cancel", "close_post();" %></div>
     <% end %>
   </div><!-- /post-form -->
-  <div id="post-manage-help">
-    <hr />
+  
+  <div id="post-help">
     <h3 class="title">View Post or Create New</h3>
     <p>To <strong>view a post</strong>, click on the title to the left.</p>
     <p>To <strong>create a new post</strong>, <%= link_to_function "click here", "new_post();" %>.</p>
   </div><!-- /post-manage-help -->
+  
 </div>

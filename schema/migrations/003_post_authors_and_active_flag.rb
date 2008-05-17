@@ -4,6 +4,7 @@ class PostAuthorsAndActiveFlagMigration < Sequel::Migration
     add_column :posts, :active, :boolean, :default => 1
   end
   def down
+    drop_column :posts, :author_id
     drop_column :posts, :active
   end
 end

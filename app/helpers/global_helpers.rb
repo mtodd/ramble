@@ -1,5 +1,13 @@
 module Merb
   module GlobalHelpers
-    # helpers defined here available to all views.  
+    
+    # Returns instance of the user while logged in.
+    # 
+    # Returns User:current_user
+    # 
+    def current_user
+      User[:username => 'mtodd']
+    end
+    
   end
 end

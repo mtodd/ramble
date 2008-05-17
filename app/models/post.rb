@@ -41,13 +41,13 @@ class Post < Sequel::Model
   
   # Turns the post into a JSON representation.
   # 
-  # Note that it adds the virtual +slug+ attribute into the values hash before
-  # generating the JSON.
+  # Note that it adds the virtual +slug+ attribute into the values hash, as well
+  # as the author information before generating the JSON.
   # 
   # Returns String:json_representation_of_post
   # 
   def to_json
-    self.values.merge(:slug => self.slug).to_json
+    self.values.merge(:slug => self.slug, :author => User[self.author_id].values).to_json
   end
   
 end

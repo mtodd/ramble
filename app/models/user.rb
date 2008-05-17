@@ -2,7 +2,19 @@ require 'digest/md5'
 
 class User < Sequel::Model
   
-  set_primary_key :username
+  # = Associations
+  one_to_many :posts
+  
+  # = Validations
+  validates do
+    presence_of :username
+    presence_of :password
+    presence_of :email
+    presence_of :name
+  end
+  
+  # = Hooks
+  # ...
   
   class << self
     
