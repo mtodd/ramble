@@ -1,0 +1,20 @@
+/* Application styles */
+
+/* Header */
+
+
+/* Menu */
+#menu {
+  text-align: right;
+}
+#menu ul, #menu ol {
+  list-style: none;
+}
+
+/* Body */
+
+
+/* Admin */
+table .hidden {
+  display: none;
+}

@@ -22,22 +22,26 @@
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
   
-  # Resources
-  
-  r.resources :posts
-  
-  # Admin
-  
-  r.namespace :admin do |a|
-    a.resources :posts
-  end
-  
   # This is the default route for /:controller/:action/:id
   # This is fine for most cases.  If you're heavily using resource-based
   # routes, you may want to comment/remove this line to prevent
   # clients from calling your create or destroy actions with a GET
   # r.default_routes
   
+  # = Admin
+  r.namespace :admin do |a|
+    # = Resources
+    a.resources :posts
+    
+    # = Pages
+    a.match('').to(:controller => 'posts', :action => 'index').name(:admin_home)
+  end
+  
+  # = Resources
+  r.resources :posts
+  
+  # = Pages
   # Change this for your home page to be available at /
-  r.match('/').to(:controller => 'posts', :action =>'index')
+  r.match('/').to(:controller => 'posts', :action =>'index').name(:home)
+  
 end

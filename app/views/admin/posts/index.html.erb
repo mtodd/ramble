@@ -1,3 +1,27 @@
-<table id="posts" class="container">
-  <%= partial("post", :with => @posts) %>
-</table>
+<h4>Edit Posts</h4>
+<hr />
+
+<div id="listing" class="span-6 prepend-1 colborder">
+  <p>Select a post to edit.</p>
+  <table id="posts" class="container">
+    <%= partial("post", :with => @posts) %>
+  </table>
+</div>
+
+<div id="management" class="span-14 last">
+  <div id="post-contents" style="display:none;"></div>
+  <div id="post-form">
+    <h3 class="title">Post</h3>
+    <% @post = Post.new; form_for :post, :action => url(:post) do %>
+      <div><%= text_control :title, :label => 'Title' %></div>
+      <div><%= text_control :body,  :label => 'Body' %></div>
+      <div><%= submit_button 'Save' %></div>
+    <% end %>
+  </div><!-- /post-form -->
+  <div id="post-manage-help">
+    <hr />
+    <h3 class="title">View Post or Create New</h3>
+    <p>To <strong>view a post</strong>, click on the title to the left.</p>
+    <p>To <strong>create a new post</strong>, <%= link_to_function "click here", "new_post();" %>.</p>
+  </div><!-- /post-manage-help -->
+</div>

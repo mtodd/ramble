@@ -1,10 +1,11 @@
 module Admin
-  class Posts < Application
+  
+  # Just a wrapper for posts, but with authentication.
+  # 
+  class Posts < ::Posts
     
-    def index
-      @posts = Post.order("created_at DESC").all
-      render
-    end
+    # ...
     
   end
+  
 end # Admin

@@ -9,7 +9,11 @@
     %meta{:name => 'description', :content => "Matt Todd's Blog"}
     %meta{:name => 'keywords', :content => 'ruby, json, framework, soa, http, halcyon'}
     
+    %script{:lang => 'text/javascript', :src => '/javascripts/jquery-1.2.3.min.js'}
+    %script{:lang => 'text/javascript', :src => '/javascripts/application.js'}
+    
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/master.css', :media => 'screen'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/application.css', :media => 'screen'}
     
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/blueprint/screen.css', :media => 'screen'}
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/blueprint/print.css', :media => 'print'}
@@ -24,17 +28,18 @@
           %h1 Maraby.org
           %h2.alt Matt Todd's Blog
           
-        #text.span-4.last
-          Uhhh, hi...
+        #menu.span-6.last
+          
+          = partial('shared/menu')
           
       %hr
       
       #body
         
-        #main.span-14.prepend-1.colborder
-          
-          - puts catch_content(:for_layout)
-          
-        #menu.span-4.last
-          
-          = partial('shared/menu')
+        - puts catch_content(:for_layout)
+        
+      #footer
+        
+        %hr
+        %p.alt.prepend-1
+          Copyright (C) 2008 <a href="http://maraby.org/contact.html">Matt Todd</a>, all rights reserved.

@@ -1,4 +1,11 @@
-<div id="post-<%= post.id %>" class="post">
-  <p class="body"><%= h post.body %></p>
-  <p class="created"><%= relative_date(post.created_at) %></p>
+<div id="content" class="span-14 prepend-1 colborder">
+  <div id="post-<%= post.id %>" class="post">
+    <p class="body"><%= h post.body %></p>
+  </div>
+</div>
+
+<div id="text" class="span-6 last">
+  <h3 class="title"><%= post.title %></h3>
+  <span class="created">Posted <%= relative_date(post.created_at) %></span>
+  <span class="author">by <%= post.user.name rescue 'Joe' %></span>
 </div>
