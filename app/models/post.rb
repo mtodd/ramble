@@ -1,5 +1,25 @@
 class Post < Sequel::Model
   
+  # = Associations
+  many_to_one :author, :class => User
+  
+  # = Validations
+  validates do
+    presence_of :title
+    presence_of :body
+  end
+  
+  # = Hooks
+  before_create do
+    self.created_at = Time.now
+    self.updated_at = Time.now
+  end
+  before_update do
+    self.updated_at = Time.now
+  end
+  
+  # = Methods
+  
   # Returns the title as a slug-formatted string with the ID.
   # 
   # Examples
@@ -11,12 +31,23 @@ class Post < Sequel::Model
   # 
   def slug
     # hugs and kisses to Rick Olson's permalink_fu
-    slug = title
+    slug = title.dup
     slug.gsub!(/\W+/, ' ')
     slug.strip!
     slug.downcase!
     slug.gsub!(/\ +/, '-')
     return "#{id.to_s}-#{slug}"
+  end
+  
+  # Turns the post into a JSON representation.
+  # 
+  # Note that it adds the virtual +slug+ attribute into the values hash before
+  # generating the JSON.
+  # 
+  # Returns String:json_representation_of_post
+  # 
+  def to_json
+    self.values.merge(:slug => self.slug).to_json
   end
   
 end
