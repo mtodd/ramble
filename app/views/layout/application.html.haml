@@ -1,11 +1,40 @@
 !!! 1.0 Strict
 %html{:xmlns => 'http://www.w3.org/1999/xhtml', :"xml:lang" => 'en', :lang => 'en'}
+  
   %head
     %title Ramble &mdash; Matt Todd's Blog
+    
     %meta{:name => 'content-type', :content => 'text/html;charset=utf-8'}
     %meta{:name => 'author', :content => 'Matt Todd (maraby.org)'}
     %meta{:name => 'description', :content => "Matt Todd's Blog"}
     %meta{:name => 'keywords', :content => 'ruby, json, framework, soa, http, halcyon'}
+    
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/master.css', :media => 'screen'}
+    
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/blueprint/screen.css', :media => 'screen'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/blueprint/print.css', :media => 'print'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/stylesheets/blueprint/plugins/fancy-type/screen.css', :media => 'screen, projection'}
+    
   %body
-    - puts catch_content :for_layout
+    
+    #container
+      
+      #header
+        #title.span-15.colborder
+          %h1 Maraby.org
+          %h2.alt Matt Todd's Blog
+          
+        #text.span-4.last
+          Uhhh, hi...
+          
+      %hr
+      
+      #body
+        
+        #main.span-14.prepend-1.colborder
+          
+          - puts catch_content(:for_layout)
+          
+        #menu.span-4.last
+          
+          = partial('shared/menu')
