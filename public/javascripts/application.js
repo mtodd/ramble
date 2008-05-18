@@ -1,3 +1,20 @@
+// Admin Funcitons ////////////////////////////////////////////////////////////
+
+// Filter the posts in the list by titles
+var filter_posts = function(search) {
+  if(search == ''){search = '.*';}//else{search = '.*'+search+'.*';}
+  search = new RegExp(search, "i");
+  $('#posts .post .title a').each(function(index, post){
+    title = post.text;
+    post_id = post.getAttribute('slug');
+    if(!search.test(title)) {
+      $("#posts tr#"+post_id+".post").addClass('hidden');
+    } else {
+      $("#posts tr#"+post_id+".post").removeClass('hidden');
+    }
+  });
+}
+
 // Get the post, update the fields with its attributes
 var show_post = function(url) {
   jQuery.getJSON(url, function(data, status){

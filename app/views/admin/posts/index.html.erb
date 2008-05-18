@@ -2,6 +2,11 @@
 <hr />
 
 <div id="listing" class="span-6 prepend-1 colborder">
+  <div id="posts-filter">
+    <label for="posts-filter-search">Filter Posts with</label>
+    <input type="text" onkeyup="filter_posts(this.value);" name="posts-filter-search" style="width:100%;" />
+    <hr class="space" />
+  </div>
   <p>Select a post to edit.</p>
   <table id="posts" class="container">
     <%= partial("post", :with => @posts) %>
