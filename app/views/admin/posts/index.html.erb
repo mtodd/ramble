@@ -17,12 +17,15 @@
   
   <div id="post-contents" style="display:none;">
     <h3 class="title">Post</h3>
-    <div><%= link_to_function "Delete", "delete_post('#{url(:post, "1")}');" %> or <%= link_to_function "Cancel", "close_post();" %></div>
+    <div><%= link_to_function "Delete", "if(confirm('Are you sure?')){delete_post();}" %> or <%= link_to_function "Cancel", "close_post();" %></div>
     <% form_tag(:action => '', :id => 'form_for_update_post') do %>
       <%= hidden_field(:name => "_method", :value => "PUT") %>
       <div><%= text_field :name => "title", :id => 'post-contents_title', :label => 'Title', :style => 'width:100%;' %></div>
       <div><%= text_area_field '', :name => "body", :id => 'post-contents_body', :rows => '10', :style => 'width:100%;',  :label => 'Body' %></div>
       <div><%= submit_button "Save" %> or <%= link_to_function "Cancel", "close_post();" %></div>
+    <% end %>
+    <% form_tag(:action => '', :id => 'form_for_delete_post') do %>
+      <%= hidden_field(:name => "_method", :value => "DELETE") %>
     <% end %>
   </div>
   

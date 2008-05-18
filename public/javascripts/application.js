@@ -27,6 +27,7 @@ var show_post = function(url) {
       $('#post-contents_body').val(data.body);
       // Set action
       $('#form_for_update_post').attr({'action': url});
+      $('#form_for_delete_post').attr({'action': url});
     } else {
       alert('Load failed.');
     }
@@ -48,8 +49,11 @@ var new_post = function() {
   $('#post-form').show('slow');
   $('#post-help').hide('slow');
   $('#post-contents').hide('slow');
-  // Set action
-  $('#form_for_post_create').action = $('#post_create_action').value();
+}
+
+// Remove the post
+var delete_post = function() {
+  $('#form_for_delete_post').submit();
 }
 
 // Hide everything but the help segment

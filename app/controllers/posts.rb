@@ -59,4 +59,17 @@ class Posts < Application
     end
   end
   
+  # DELETE /posts/1
+  def destroy
+    @post = Post[params[:id]]
+    
+    if @post.destroy
+      return redirect url(:admin_posts) if content_type == :html
+      render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
+    else
+      return redirect url(:admin_posts) if content_type == :html
+      render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
+    end
+  end
+  
 end
