@@ -16,18 +16,22 @@
 <div id="management" class="span-14 last">
   
   <div id="post-contents" style="display:none;">
-    <h3 id="post-contents_title" class="title">default</h3>
-    <div id="post-contents_body" class="body">default</div>
-    <div id="post-contents_author" class="author">default</div>
-    <%= link_to_function "close", "close_post();" %>
+    <h3 class="title">Post</h3>
+    <div><%= link_to_function "Delete", "delete_post('#{url(:post, "1")}');" %> or <%= link_to_function "Cancel", "close_post();" %></div>
+    <% form_tag(:action => '', :id => 'form_for_update_post') do %>
+      <%= hidden_field(:name => "_method", :value => "PUT") %>
+      <div><%= text_field :name => "title", :id => 'post-contents_title', :label => 'Title', :style => 'width:100%;' %></div>
+      <div><%= text_area_field '', :name => "body", :id => 'post-contents_body', :rows => '10', :style => 'width:100%;',  :label => 'Body' %></div>
+      <div><%= submit_button "Save" %> or <%= link_to_function "Cancel", "close_post();" %></div>
+    <% end %>
   </div>
   
   <div id="post-form" style="display:none;">
     <%= hidden_field(:name => 'post_create_action', :value => url(:posts), :id => 'post_create_action') %>
     <h3 class="title">Post</h3>
-    <% form_tag(:action => url(:posts), :id => 'form_for_post') do %>
-      <div><%= text_field :name => "title", :label => 'Title' %></div>
-      <div><%= text_field :name => "body",  :label => 'Body' %></div>
+    <% form_tag(:action => url(:posts), :id => 'form_for_create_post') do %>
+      <div><%= text_field :name => "title", :label => 'Title', :style => 'width:100%;' %></div>
+      <div><%= text_area_field '', :rows => '10', :style => 'width:100%;', :name => "body",  :label => 'Body' %></div>
       <div><%= submit_button "Save" %> or <%= link_to_function "Cancel", "close_post();" %></div>
     <% end %>
   </div><!-- /post-form -->

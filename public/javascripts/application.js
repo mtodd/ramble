@@ -2,7 +2,6 @@
 
 // Filter the posts in the list by titles
 var filter_posts = function(search) {
-  if(search == ''){search = '.*';}//else{search = '.*'+search+'.*';}
   search = new RegExp(search, "i");
   $('#posts .post .title a').each(function(index, post){
     title = post.text;
@@ -24,9 +23,10 @@ var show_post = function(url) {
       $('#post-help').hide('slow');
       $('#post-contents').show('slow');
       // Set contents
-      $('#post-contents_title').text(data.title);
-      $('#post-contents_body').text(data.body);
-      $('#post-contents_author').text(data.author_id);
+      $('#post-contents_title').val(data.title);
+      $('#post-contents_body').val(data.body);
+      // Set action
+      $('#form_for_update_post').attr({'action': url});
     } else {
       alert('Load failed.');
     }
@@ -49,7 +49,7 @@ var new_post = function() {
   $('#post-help').hide('slow');
   $('#post-contents').hide('slow');
   // Set action
-  $('#form_for_post').action = $('#post_create_action').value();
+  $('#form_for_post_create').action = $('#post_create_action').value();
 }
 
 // Hide everything but the help segment
