@@ -14,7 +14,7 @@ module Merb
     # Returns User:current_user
     # 
     def current_user
-      User[:username => 'mtodd']
+      @current_user
     end
     
     # Administrative functionality and test.
