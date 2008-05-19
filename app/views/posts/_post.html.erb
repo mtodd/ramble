@@ -8,8 +8,13 @@
 
 <div id="text" class="span-7 last">
   <h3 class="title"><%= link_to post.title, url(:post, post.id) %></h3>
-  <span class="created">Posted <%= relative_date(post.created_at) %></span>
-  <span class="author">by <%= post.author.name rescue 'anonymous' %></span>
+  <div class="meta-data">
+    <span class="created">Posted <%= relative_date(post.created_at) %></span>
+    <span class="author">by <%= post.author.name rescue 'anonymous' %></span>
+  </div>
+  <div class="comments">
+    <%= link_to '(View) Comments', url(:post, post.id)+'#disqus_thread' %>
+  </div>
   <hr class="space" />
 </div>
 

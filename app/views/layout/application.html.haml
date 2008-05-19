@@ -56,3 +56,5 @@
       
       = "show_flash('#{@flash_for_display[:notice]}', 'notice')" if @flash_for_display[:notice]
       = "show_flash('#{@flash_for_display[:warning]}', 'notice')" if @flash_for_display[:warning]
+      
+    = partial('shared/disqus_comments_count')

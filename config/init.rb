@@ -117,6 +117,14 @@ Merb::Config.use do |c|
   
   c[:session_secret_key]  = '31dbd09a638e0e99bd829dbe4d469733aff80cab'
   c[:session_store] = 'cookie'
+  
+  # Disqus account name
+  begin
+    c[:disqus] = YAML.load_file(Merb.dir_for(:config)/'disqus.yml').to_mash[:account]
+  rescue Errno::ENOENT => e
+    Merb.logger.error 'Unable to load the Disqus configuration for comment system.'
+    c[:disqus] = nil
+  end
 end
 
 

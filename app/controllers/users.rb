@@ -1,4 +1,4 @@
-class Users < Application
+class Users < Authenticated
   
   def index
     render
