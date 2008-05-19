@@ -1,6 +1,6 @@
-<div id="post-<%= post.id %>" class="post span-14 prepend-1 colborder">
+<div id="post-<%= post.id %>" class="post span-13 prepend-1 colborder">
   <div class="body"><%= textilize(post.intro) rescue '' %></div>
-  <% if post.body %>
+  <% unless post.body.empty? %>
     <div class="alt">Read <%= link_to 'the rest of the post', url(:post, post.id) %>.</div>
   <% end %>
   <hr class="space" />

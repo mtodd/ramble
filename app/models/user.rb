@@ -16,6 +16,13 @@ class User < Sequel::Model
   # = Hooks
   # ...
   
+  # = Instance methods
+  
+  def cleartext_password=(password)
+    self.password = Digest::MD5.hexdigest(password)
+  end
+  
+  # = Class Methods
   class << self
     
     # Authenticates a user against the username and password stored in the
