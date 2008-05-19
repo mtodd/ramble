@@ -1,13 +1,16 @@
-<div id="content" class="span-14 prepend-1 colborder">
-  <div id="post-<%= post.id %>" class="post">
-    <div class="body"><%= textilize(post.body) %></div>
-  </div>
+<div id="post-<%= post.id %>" class="post span-14 prepend-1 colborder">
+  <div class="body"><%= textilize(post.intro) rescue '' %></div>
+  <% if post.body %>
+    <div class="alt">Read <%= link_to 'the rest of the post', url(:post, post.id) %>.</div>
+  <% end %>
+  <hr class="space" />
 </div>
 
 <div id="text" class="span-7 last">
   <h3 class="title"><%= link_to post.title, url(:post, post.id) %></h3>
   <span class="created">Posted <%= relative_date(post.created_at) %></span>
   <span class="author">by <%= post.author.name rescue 'anonymous' %></span>
+  <hr class="space" />
 </div>
 
 <hr />

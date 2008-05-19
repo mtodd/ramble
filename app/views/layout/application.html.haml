@@ -2,6 +2,7 @@
 %html{:xmlns => 'http://www.w3.org/1999/xhtml', :"xml:lang" => 'en', :lang => 'en'}
   
   %head
+    
     %title Ramble &mdash; Matt Todd's Blog
     
     %meta{:name => 'content-type', :content => 'text/html;charset=utf-8'}
@@ -23,6 +24,10 @@
     
     #container
       
+      #flash{:style => 'display:none;'}
+        
+        %p.message
+        
       #header
         #title.span-15
           %h1 Maraby.org
@@ -44,3 +49,10 @@
         %hr
         %p.alt.prepend-1
           Copyright (C) 2008 <a href="http://maraby.org/contact.html">Matt Todd</a>, all rights reserved.
+          
+  %head
+    
+    %script{:lang => 'text/javascript'}
+      
+      = "show_flash('#{@flash_for_display[:notice]}', 'notice')" if @flash_for_display[:notice]
+      = "show_flash('#{@flash_for_display[:warning]}', 'notice')" if @flash_for_display[:warning]

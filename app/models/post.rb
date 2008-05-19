@@ -6,7 +6,8 @@ class Post < Sequel::Model
   # = Validations
   validates do
     presence_of :title
-    presence_of :body
+    presence_of :intro
+    # presence_of :body
   end
   
   # = Hooks

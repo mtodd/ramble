@@ -35,14 +35,17 @@ class Posts < Authenticated
     
     @post = Post.new(
       :title => params[:title],
+      :intro => params[:intro],
       :body => params[:body],
       :author_id => current_user.id
     )
     
     if @post.save
+      flash[:notice] = 'Post created.'
       return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
     else
+      flash[:warning] = 'Post not created, there was an error.'
       return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
     end
@@ -54,9 +57,11 @@ class Posts < Authenticated
     @post.update_with_params params
     
     if @post.save
+      flash[:notice] = 'Post updated.'
       return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
     else
+      flash[:warning] = 'Post not updated, there was an error.'
       return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
     end
@@ -67,9 +72,11 @@ class Posts < Authenticated
     @post = Post[params[:id]]
     
     if @post.destroy
+      flash[:notice] = 'Post deleted.'
       return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
     else
+      flash[:warning] = 'Post not deleted, there was an error.'
       return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
     end

@@ -6,7 +6,10 @@
   <hr class="space" />
   <hr />
   
-  <div class="body"><%= textilize(@post.body) %></div>
+  <div class="body">
+    <%= textilize(@post.intro) if @post.intro %>
+    <%= textilize(@post.body) if @post.body %>
+  </div>
 </div>
 
 <hr />

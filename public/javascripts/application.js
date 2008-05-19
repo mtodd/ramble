@@ -1,3 +1,14 @@
+// Site Funcitons /////////////////////////////////////////////////////////////
+
+var show_flash = function(message, klass) {
+  $('#flash').show('slow');
+  $('#flash p.message').addClass(klass).text(message);
+}
+
+var hide_flash = function() {
+  $('#flash').hide('slow');
+}
+
 // Admin Funcitons ////////////////////////////////////////////////////////////
 
 // Filter the posts in the list by titles
@@ -24,6 +35,7 @@ var show_post = function(url) {
       $('#post-contents').show('slow');
       // Set contents
       $('#post-contents_title').val(data.title);
+      $('#post-contents_intro').val(data.intro);
       $('#post-contents_body').val(data.body);
       // Set action
       $('#form_for_update_post').attr({'action': url});
