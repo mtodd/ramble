@@ -23,6 +23,19 @@ Dependencies:
 Once these dependencies are satisfied and migrations have been run, you should
 be fine to run the server.
 
+To start creating posts, run the following:
+
+$ merb -i
+>> u = User.create(:username => 'test', :email => 'test')
+>> u.cleartext_password = "password"
+>> u.save
+
+This will be your username and password to begin authoring posts as.
+
+To set up comments with Disqus (currently the only way to have comments), edit
+the file in config/disqus.yml (copy from config/disqus.yml.sample) and set it to
+your custom Disqus website address account.
+
 
 == License
 
