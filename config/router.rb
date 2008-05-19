@@ -39,6 +39,11 @@ Merb::Router.prepare do |r|
   
   # = Resources
   r.resources :posts
+  r.resources :sessions
+  
+  # = Shortcuts
+  r.match('/login').to(:controller => 'sessions', :action => 'new').name(:login)
+  r.match('/logout').to(:controller => 'sessions', :action => 'delete').name(:logout)
   
   # = Pages
   # Change this for your home page to be available at /

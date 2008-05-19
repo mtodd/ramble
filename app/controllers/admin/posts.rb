@@ -4,7 +4,7 @@ module Admin
   # 
   class Posts < ::Posts
     
-    # ...
+    # before :authenticated?, :exclude => []
     
   end
   

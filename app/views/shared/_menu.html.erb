@@ -1,6 +1,12 @@
 <hr class="space" />
 <ul>
   <li><%= link_to "Home", url(:home) %></li>
-  <li><%= link_to "About", url(:home) %></li>
-  <li><%= link_to "Projects", url(:home) %></li>
+  <% if admin %>
+    <li><%= link_to "Admin", url(:admin_posts) %></li>
+    <li><%= link_to "Logout", url(:logout, session[:authenticated_user_id]) %></li>
+  <% else %>
+    <li><%= link_to "About", url(:home) %></li>
+    <li><%= link_to "Projects", url(:home) %></li>
+    <li><%= link_to "Login", url(:login) %></li>
+  <% end %>
 </ul>

@@ -1,7 +1,10 @@
-class Posts < Application
+class Posts < Authenticated
   
+  before :authenticated?, :exclude => [:index, :show]
+  
+  # GET /posts
   def index
-    @posts = Post.order("created_at DESC").all
+    @posts = Post.order(:created_at.desc).all
     render
   end
   
@@ -37,10 +40,10 @@ class Posts < Application
     )
     
     if @post.save
-      return redirect url(:admin_posts) if content_type == :html
+      return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
     else
-      return redirect url(:admin_posts) if content_type == :html
+      return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
     end
   end
@@ -51,10 +54,10 @@ class Posts < Application
     @post.update_with_params params
     
     if @post.save
-      return redirect url(:admin_posts) if content_type == :html
+      return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
     else
-      return redirect url(:admin_posts) if content_type == :html
+      return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
     end
   end
@@ -64,10 +67,10 @@ class Posts < Application
     @post = Post[params[:id]]
     
     if @post.destroy
-      return redirect url(:admin_posts) if content_type == :html
+      return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post, :status => :created, :location => @post if content_type.in? :xml, :json
     else
-      return redirect url(:admin_posts) if content_type == :html
+      return redirect(url(:admin_posts)) if content_type == :html
       render :xml => @post.errors, :status => :unprocessable_entity if content_type.in? :xml, :json
     end
   end

@@ -1,0 +1,14 @@
+<div id="post-<%= @post.id %>" class="post">
+  <h1 class="title"><%= @post.title %></h1>
+  <span class="created">Posted <%= relative_date(@post.created_at) %></span>
+  <span class="author">by <%= @post.author.name rescue 'anonymous' %></span>
+  
+  <hr class="space" />
+  <hr />
+  
+  <div class="body"><%= textilize(@post.body) %></div>
+</div>
+
+<hr />
+
+<p>Go back <%= link_to 'home', url(:home) %>.</p>

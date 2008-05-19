@@ -62,6 +62,10 @@ dependency "merb_helpers"
 dependency "merb-assets"
 dependency "merb-haml"
 
+dependency "merbful_authentication"
+
+dependency "RedCloth"
+
 Merb::BootLoader.after_app_loads do
   # Add dependencies here that must load after the application loads:
 

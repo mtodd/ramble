@@ -1,0 +1,5 @@
+<% form_tag(:action => url(:sessions)) do %>
+  <div><%= text_field :name => "username", :label => 'Username', :style => 'width:100%;' %></div>
+  <div><%= password_field :name => "password",  :label => 'Password', :style => 'width:100%;' %></div>
+  <div><%= submit_button "Login" %> or <%= link_to "Cancel", url(:home) %></div>
+<% end %>
