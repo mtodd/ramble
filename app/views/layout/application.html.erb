@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>Ramble &mdash; Matt Todd's Blog</title>
+    
+    <meta content='text/html;charset=utf-8' name='content-type' />
+    <meta content='Matt Todd (maraby.org)' name='author' />
+    <meta content="Matt Todd's Blog" name='description' />
+    <meta content='ruby, json, framework, soa, http, halcyon' name='keywords' />
+    
+    <% require_js 'jquery-1.2.3.min.js', 'application' %>
+    <%= include_required_js %>
+    
+    <link href='/stylesheets/master.css' media='screen' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/application.css' media='screen' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/blueprint/plugins/fancy-type/screen.css' media='screen, projection' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <div id='container'>
+      <div id='flash' style='display:none;'>
+        <p class='message'>
+        </p>
+      </div>
+      <div id='header'>
+        <div class='span-15' id='title'>
+          <h1>Maraby.org</h1>
+          <h2 class='alt'>Matt Todd's Blog</h2>
+        </div>
+        <div class='span-7 last' id='menu'>
+          <%= partial('shared/menu') %>
+        </div>
+      </div>
+      <hr />
+      <div id='body'>
+        <%= catch_content(:for_layout) %>
+      </div>
+      <div id='footer'>
+        <hr class='space' />
+        <hr />
+        <p class='alt prepend-1'>
+          Copyright &copy; 2008 <a href="http://maraby.org/contact.html">Matt Todd</a>, all rights reserved.
+          Ramble is released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.
+          You can find the <a href="http://github.com/mtodd/ramble/">source on GitHub</a>.
+        </p>
+      </div>
+    </div>
+  </body>
+  <head>
+    <% if @flash_for_display[:notice] or @flash_for_display[:warning] %>
+      <script lang='text/javascript'>
+        <% if @flash_for_display[:notice] %>show_flash('<%= @flash_for_display[:notice] %>', 'notice');<% end %>
+        <% if @flash_for_display[:warning] %>show_flash('<%= @flash_for_display[:warning] %>', 'notice');<% end %>
+      </script>
+    <% end %>
+    <% if Comment.disqus_account %>
+      <%= partial('shared/disqus_comments_count') %>
+    <% end %>
+  </head>
+</html>
