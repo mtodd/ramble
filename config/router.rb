@@ -46,9 +46,10 @@ Merb::Router.prepare do |r|
   # = Shortcuts
   r.match('/login').to(:controller => 'sessions', :action => 'new').name(:login)
   r.match('/logout').to(:controller => 'sessions', :action => 'delete').name(:logout)
-  r.match('/projects').to(:controller => 'pages', :action => 'show', :id => 'projects').name(:home)
-  r.match('/about').to(:controller => 'pages', :action => 'show', :id => 'about').name(:home)
-  r.match('/tumblelog').to(:controller => 'pages', :action => 'show', :id => 'tumblelog').name(:home)
+  r.match('/projects').to(:controller => 'pages', :action => 'show', :id => 'projects').name(:projects)
+  r.match('/about').to(:controller => 'pages', :action => 'show', :id => 'about').name(:about)
+  r.match('/tumblelog').to(:controller => 'pages', :action => 'show', :id => 'tumblelog').name(:tumblelog)
+  r.match('/blog').to(:controller => 'posts', :action => 'index').name(:blog)
   r.match('/home').to(:controller => 'pages', :action => 'show', :id => 'home').name(:home)
   
   # = Pages
