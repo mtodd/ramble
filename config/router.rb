@@ -46,9 +46,13 @@ Merb::Router.prepare do |r|
   # = Shortcuts
   r.match('/login').to(:controller => 'sessions', :action => 'new').name(:login)
   r.match('/logout').to(:controller => 'sessions', :action => 'delete').name(:logout)
+  r.match('/projects').to(:controller => 'pages', :action => 'show', :id => 'projects').name(:home)
+  r.match('/about').to(:controller => 'pages', :action => 'show', :id => 'about').name(:home)
+  r.match('/tumblelog').to(:controller => 'pages', :action => 'show', :id => 'tumblelog').name(:home)
+  r.match('/home').to(:controller => 'pages', :action => 'show', :id => 'home').name(:home)
   
   # = Pages
   # Change this for your home page to be available at /
-  r.match('/').to(:controller => 'pages', :action =>'home').name(:home)
+  r.match('/').to(:controller => 'pages', :action =>'show', :id => 'home').name(:root)
   
 end

@@ -1,0 +1,21 @@
+<div id="page-<%= @post.id %>" class="page">
+  <h1 class="title"><%= @page.title %></h1>
+  <span class="updated">Updated <%= relative_date(@page.updated_at) %></span>
+  <span class="author">by <%= @page.author.name rescue 'anonymous' %></span>
+  
+  <hr class="space" />
+  <hr />
+  
+  <div class="body">
+    <%= textilize(@page.content) %>
+    <hr class="space" />
+  </div>
+</div>
+
+<hr />
+
+<%= partial('shared/disqus_comments') %>
+
+<hr />
+
+<p>Go back <%= link_to 'home', url(:home) %>.</p>
