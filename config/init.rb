@@ -60,10 +60,11 @@ Gem.path.unshift(Merb.root / "gems")
 
 dependency "merb_helpers"
 dependency "merb-assets"
-dependency "merb-haml"
 
-dependency "merbful_authentication"
+# dependency "merb-haml"
+# dependency "merbful_authentication"
 
+# Problem with using +dependency+ to load "redcloth" so sticking with +require+.
 require "redcloth"
 
 Merb::BootLoader.after_app_loads do
@@ -115,7 +116,8 @@ Merb::Config.use do |c|
   # with the cookie session store. If not specified, defaults to '_session_id'.
   # c[:session_id_key] = '_session_id'
   
-  c[:session_secret_key]  = '31dbd09a638e0e99bd829dbe4d469733aff80cab'
+  c[:session_id_key] = '_local_session_id'
+  c[:session_secret_key]  = '12843b28829d79398d2652f5d19c16b0f710fd56'
   c[:session_store] = 'cookie'
   
   # Disqus account name

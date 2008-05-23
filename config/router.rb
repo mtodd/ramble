@@ -32,6 +32,7 @@ Merb::Router.prepare do |r|
   r.namespace :admin do |a|
     # = Resources
     a.resources :posts
+    a.resources :pages
     
     # = Pages
     a.match('').to(:controller => 'posts', :action => 'index').name(:admin_home)
@@ -39,6 +40,7 @@ Merb::Router.prepare do |r|
   
   # = Resources
   r.resources :posts
+  r.resources :pages
   r.resources :sessions
   
   # = Shortcuts
@@ -47,6 +49,6 @@ Merb::Router.prepare do |r|
   
   # = Pages
   # Change this for your home page to be available at /
-  r.match('/').to(:controller => 'posts', :action =>'index').name(:home)
+  r.match('/').to(:controller => 'pages', :action =>'home').name(:home)
   
 end

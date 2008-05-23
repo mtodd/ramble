@@ -1,5 +1,45 @@
 /* Application styles */
 
+/* Body */
+body {
+  margin-top: 0em;
+  padding-top: 0em;
+}
+
+/* Top */
+div#top {
+  padding: 0em;
+  margin: 0em;
+  background-color: #222;
+}
+div#top div.left, div#top div.right {
+  margin: 0em 1em;
+  padding: 0em;
+}
+div#top ul {
+  list-style: none;
+  margin: 0em;
+  padding: 0em;
+}
+div#top ul li {
+  display: inline;
+  margin: 0em;
+  padding: 0em;
+}
+div#top a {
+  background: #222;
+  padding: 2px 2em;
+  color: #FFF;
+}
+div#top a:hover {
+  background: #333;
+  text-decoration: none;
+}
+div#top div.clearer {
+  clear: both;
+  height: 0em;
+}
+
 /* Header */
 
 

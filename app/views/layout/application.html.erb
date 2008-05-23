@@ -11,14 +11,16 @@
     <% require_js 'jquery-1.2.3.min.js', 'application' %>
     <%= include_required_js %>
     
-    <link href='/stylesheets/master.css' media='screen' rel='stylesheet' type='text/css' />
-    <link href='/stylesheets/application.css' media='screen' rel='stylesheet' type='text/css' />
     <link href='/stylesheets/blueprint/screen.css' media='screen' rel='stylesheet' type='text/css' />
     <link href='/stylesheets/blueprint/print.css' media='print' rel='stylesheet' type='text/css' />
+    <!--[if IE]><link href="/stylesheets/blueprint/ie.css" media="screen, projection" rel="stylesheet" type="text/css"><![endif]-->
+    <link href='/stylesheets/master.css' media='screen' rel='stylesheet' type='text/css' />
+    <link href='/stylesheets/application.css' media='screen' rel='stylesheet' type='text/css' />
   </head>
   <body>
+    <%= partial('shared/top') %>
     <div id='container'>
-      <div id='flash' style='display:none;'>
+      <div id='flash' style='visible:hidden;'>
         <p class='message'>
         </p>
       </div>
