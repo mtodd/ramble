@@ -12,65 +12,75 @@ var hide_flash = function() {
 // Admin Funcitons ////////////////////////////////////////////////////////////
 
 // Filter the posts in the list by titles
-var filter_posts = function(search) {
+var filter_list = function(list, search) {
   search = new RegExp(search, "i");
-  $('#posts .post .title a').each(function(index, post){
-    title = post.text;
-    post_id = post.getAttribute('slug');
+  $('#'+list+'s .'+list+' .title a').each(function(index, item){
+    title = item.text;
+    item_id = item.getAttribute('slug');
     if(!search.test(title)) {
-      $("#posts tr#"+post_id+".post").addClass('hidden');
+      $('#'+list+'s tr#'+item_id+'.'+list).addClass('hidden');
     } else {
-      $("#posts tr#"+post_id+".post").removeClass('hidden');
+      $('#'+list+'s tr#'+item_id+'.'+list).removeClass('hidden');
     }
   });
 }
 
 // Get the post, update the fields with its attributes
-var show_post = function(url) {
+var show_item = function(item, url, fields) {
   jQuery.getJSON(url, function(data, status){
     if(status == 'success') {
       // Hide non-important segments
-      $('#post-form').hide('slow');
-      $('#post-help').hide('slow');
-      $('#post-contents').show('slow');
+      $('#'+item+'-form').hide('slow');
+      $('#'+item+'-help').hide('slow');
+      $('#'+item+'-contents').show('slow');
       // Set contents
-      $('#post-contents_title').val(data.title);
-      $('#post-contents_intro').val(data.intro);
-      $('#post-contents_body').val(data.body);
+      for(field_index in fields) {
+        field = fields[field_index];
+        $('#'+item+'-contents_'+field).val(data[field]);
+      }
+      // fields.each(function(index, field){
+      //   $('#'+item+'-contents_'+field).val(data[field]);
+      // });
       // Set action
-      $('#form_for_update_post').attr({'action': url});
-      $('#form_for_delete_post').attr({'action': url});
+      $('#form_for_update').attr({'action': url});
+      $('#form_for_delete').attr({'action': url});
     } else {
       alert('Load failed.');
     }
   });
 }
 
-// Get the post, update form with its attributes
-var edit_post = function(url) {
-  // jQuery.getJSON(url, function(data){
-  //   alert(data.status);
-  //   alert(data.body);
-  //   alert(data);
-  // });
+// Update the item with the data in the fields
+var edit_item = function(item, url) {
+  // to be implemented
+}
+
+// Remove the item
+var delete_item = function() {
+  $('#form_for_delete').submit();
 }
 
 // Show the form, set the action accordingly
-var new_post = function() {
+var new_item = function(item) {
   // Hide non-important segments
-  $('#post-form').show('slow');
-  $('#post-help').hide('slow');
-  $('#post-contents').hide('slow');
-}
-
-// Remove the post
-var delete_post = function() {
-  $('#form_for_delete_post').submit();
+  $('#'+item+'-form').show('slow');
+  $('#'+item+'-help').hide('slow');
+  $('#'+item+'-contents').hide('slow');
 }
 
 // Hide everything but the help segment
-var close_post = function() {
-  $('#post-form').hide('slow');
-  $('#post-contents').hide('slow');
-  $('#post-help').show('slow');
+var close_item = function(item) {
+  $('#'+item+'-form').hide('slow');
+  $('#'+item+'-contents').hide('slow');
+  $('#'+item+'-help').show('slow');
 }
+
+
+// = Posts
+
+// ...
+
+
+// = Pages
+
+// 

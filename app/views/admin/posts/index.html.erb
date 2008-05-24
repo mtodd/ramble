@@ -4,7 +4,7 @@
 <div id="listing" class="span-6 prepend-1 colborder">
   <div id="posts-filter">
     <label for="posts-filter-search">Filter Posts with</label>
-    <input type="text" onkeyup="filter_posts(this.value);" name="posts-filter-search" style="width:100%;" />
+    <input type="text" onkeyup="filter_list('post', this.value);" name="posts-filter-search" style="width:100%;" />
     <hr class="space" />
   </div>
   <p>Select a post to edit.</p>
@@ -18,14 +18,14 @@
   <div id="post-contents" style="display:none;">
     <h3 class="title">Post</h3>
     <div><%= link_to_function "Delete", "if(confirm('Are you sure?')){delete_post();}" %> or <%= link_to_function "Cancel", "close_post();" %></div>
-    <% form_tag(:action => '', :id => 'form_for_update_post') do %>
+    <% form_tag(:action => '', :id => 'form_for_update') do %>
       <%= hidden_field(:name => "_method", :value => "PUT") %>
       <div><%= text_field :name => "title", :id => 'post-contents_title', :label => 'Title', :style => 'width:100%;' %></div>
       <div><%= text_area_field '', :name => "intro", :id => 'post-contents_intro',  :label => 'Intro', :rows => '3', :style => 'width:100%;height:4em;' %></div>
       <div><%= text_area_field '', :name => "body", :id => 'post-contents_body',  :label => 'Body', :rows => '10', :style => 'width:100%;' %></div>
       <div><%= submit_button "Save" %> or <%= link_to_function "Cancel", "close_post();" %></div>
     <% end %>
-    <% form_tag(:action => '', :id => 'form_for_delete_post') do %>
+    <% form_tag(:action => '', :id => 'form_for_delete') do %>
       <%= hidden_field(:name => "_method", :value => "DELETE") %>
     <% end %>
   </div>
@@ -33,7 +33,7 @@
   <div id="post-form" style="display:none;">
     <%= hidden_field(:name => 'post_create_action', :value => url(:posts), :id => 'post_create_action') %>
     <h3 class="title">Post</h3>
-    <% form_tag(:action => url(:posts), :id => 'form_for_create_post') do %>
+    <% form_tag(:action => url(:posts), :id => 'form_for_create') do %>
       <div><%= text_field :name => "title", :label => 'Title', :style => 'width:100%;' %></div>
       <div><%= text_area_field '', :name => "intro",  :label => 'Intro', :rows => '3', :style => 'width:100%;height:4em;' %></div>
       <div><%= text_area_field '', :name => "body",  :label => 'Body', :rows => '10', :style => 'width:100%;' %></div>

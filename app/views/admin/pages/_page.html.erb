@@ -1,0 +1,5 @@
+<tr id="<%= page.slug %>" class="page">
+  <td class="title"><%= link_to_function page.title, "show_item('page', '#{url(:page, :id => page.id)}', ['title', 'slug', 'content']);", :slug => page.slug %></td>
+  <td class="edit hidden"><%= link_to "Edit", url(:edit_admin_page, page) %></td>
+  <td class="delete hidden"><%= link_to "Delete", url(:delete_admin_page, page), :onclick => "if(confirm('Sure?')){return true;}else{return false;}" %></td>
+</tr>

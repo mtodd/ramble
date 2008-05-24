@@ -1,0 +1,50 @@
+<h4>Edit Pages</h4>
+<hr />
+
+<div id="listing" class="span-6 prepend-1 colborder">
+  <div id="pages-filter">
+    <label for="pages-filter-search">Filter Pages with</label>
+    <input type="text" onkeyup="filter_list('page', this.value);" name="pages-filter-search" style="width:100%;" />
+    <hr class="space" />
+  </div>
+  <p>Select a page to edit.</p>
+  <table id="pages" class="container">
+    <%= partial("page", :with => @pages) %>
+  </table>
+</div><!-- /listing -->
+
+<div id="management" class="span-14 last">
+  
+  <div id="page-contents" style="display:none;">
+    <h3 class="title">Page</h3>
+    <div><%= link_to_function "Delete", "if(confirm('Are you sure?')){delete_item('page');}" %> or <%= link_to_function "Cancel", "close_item('page');" %></div>
+    <% form_tag(:action => '', :id => 'form_for_update') do %>
+      <%= hidden_field(:name => "_method", :value => "PUT") %>
+      <div><%= text_field :name => "title", :id => 'page-contents_title', :label => 'Title', :style => 'width:100%;' %></div>
+      <div><%= text_field :name => "slug", :id => 'page-contents_slug', :label => 'Slug', :style => 'width:100%;' %></div>
+      <div><%= text_area_field '', :name => "content", :id => 'page-contents_content',  :label => 'Content', :rows => '18', :style => 'width:100%;' %></div>
+      <div><%= submit_button "Save" %> or <%= link_to_function "Cancel", "close_item('page');" %></div>
+    <% end %>
+    <% form_tag(:action => '', :id => 'form_for_delete') do %>
+      <%= hidden_field(:name => "_method", :value => "DELETE") %>
+    <% end %>
+  </div><!-- /page-contents -->
+  
+  <div id="page-form" style="display:none;">
+    <%= hidden_field(:name => 'page_create_action', :value => url(:pages), :id => 'page_create_action') %>
+    <h3 class="title">Page</h3>
+    <% form_tag(:action => url(:pages), :id => 'form_for_create') do %>
+      <div><%= text_field :name => "title", :label => 'Title', :style => 'width:100%;' %></div>
+      <div><%= text_field :name => "slug", :label => 'Slug', :style => 'width:100%;' %></div>
+      <div><%= text_area_field '', :name => "content", :label => 'Content', :rows => '18', :style => 'width:100%;' %></div>
+      <div><%= submit_button "Save" %> or <%= link_to_function "Cancel", "close_item('page');" %></div>
+    <% end %>
+  </div><!-- /page-form -->
+  
+  <div id="page-help">
+    <h3 class="title">View Page or Create New</h3>
+    <p>To <strong>view a page</strong>, click on the title to the left.</p>
+    <p>To <strong>create a new page</strong>, <%= link_to_function "click here", "new_item('page');" %>.</p>
+  </div><!-- /page-help -->
+  
+</div>

@@ -20,6 +20,13 @@ class Page < Sequel::Model
   
   # = Methods
   
-  # ...
+  # Turns the page into a JSON representation.
+  # 
+  # Returns String:json_representation_of_page
+  # 
+  def to_json
+    # self.values.merge(:slug => self.slug, :author => User[self.author_id].values).to_json
+    self.values.to_json
+  end
   
 end
