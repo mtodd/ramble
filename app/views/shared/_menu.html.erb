@@ -5,8 +5,8 @@
     <li><%= link_to "Admin", url(:admin_posts) %></li>
     <li><%= link_to "Logout", url(:logout, session[:authenticated_user_id]) %></li>
   <% else %>
-    <li><%= link_to "About", url(:about) %></li>
-    <li><%= link_to "Projects", url(:projects) %></li>
     <li><%= link_to "Login", url(:login) %></li>
   <% end %>
+  <li><%= link_to "About", url(:about) %></li>
+  <li><%= link_to "Projects", url(:projects) %></li>
 </ul>
